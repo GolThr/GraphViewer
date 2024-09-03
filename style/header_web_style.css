@@ -1,0 +1,109 @@
+
+/*header_style*/
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-between;
+    background: #458cff;
+    color: #fff;
+}
+
+.header_left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.5rem;
+}
+
+.header_right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+}
+
+.title{
+    font-size: 1.1rem;
+}
+
+.head{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    border-radius: 100%;
+    background: #e4e4e4;
+}
+
+.username{
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.show_user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.float{
+    position: fixed;
+    top: 0;
+}
+
+.header_fix{
+    height: 6rem;
+}
+
+/*user_info_pop*/
+.user_info_pop{
+    display: block;
+    position: absolute;
+    width: 10rem;
+    top: 3rem;
+    right: 1rem;
+    z-index: 2;
+}
+
+.pop_arrow{
+    display: flex;
+}
+
+.user_info_inner{
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0.1rem 0.1rem 0 #e4e4e4;
+    border-radius: 1rem;
+}
+
+.user_action_list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    padding: 1rem 0;
+}
+
+.user_action_list a{
+    padding: 1rem 1.5rem;
+    color: #000;
+}
+
+.user_action_list a:link{
+    color: #000;
+    text-decoration: none;
+}
+
+.user_action_list a:visited{
+    color: #000;
+    text-decoration: none;
+}
+
+.user_action_list a:hover{
+    color: #000;
+    text-decoration: none;
+    background: #f9f9f9;
+}

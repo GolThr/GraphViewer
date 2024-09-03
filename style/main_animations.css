@@ -1,0 +1,104 @@
+.highlight_bg_1{
+    animation: highlightBg 1s linear 1;
+}
+
+@keyframes highlightBg {
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    20%{
+        background-color: var(--nodes-list-item-highlight-color);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+@-moz-keyframes highlightBg {
+    /* Firefox */
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    20%{
+        background-color: var(--nodes-list-item-highlight-color);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+@-webkit-keyframes highlightBg {
+    /* Safari 和 Chrome */
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    20%{
+        background-color: var(--nodes-list-item-highlight-color);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+@-o-keyframes highlightBg {
+    /* Opera */
+    0%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+    20%{
+        background-color: var(--nodes-list-item-highlight-color);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+
+.highlight_border_inf{
+    animation: highlightBor 1s linear infinite;
+}
+
+@keyframes highlightBor {
+    0%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    50%{
+        border-color: rgba(0, 100, 168, 0.5);
+    }
+    100%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}
+@-moz-keyframes highlightBg {
+    /* Firefox */
+    0%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    50%{
+        border-color: rgba(0, 100, 168, 0.5);
+    }
+    100%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}
+@-webkit-keyframes highlightBg {
+    /* Safari 和 Chrome */
+    0%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    50%{
+        border-color: rgba(0, 100, 168, 0.5);
+    }
+    100%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}
+@-o-keyframes highlightBg {
+    /* Opera */
+    0%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    50%{
+        border-color: rgba(0, 100, 168, 0.5);
+    }
+    100%{
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+}

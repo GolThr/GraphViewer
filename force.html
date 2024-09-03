@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>力导向图</title>
+    <link rel="stylesheet" href="style/theme_styles.css" type="text/css"/>
+    <link rel="stylesheet" href="style/main_animations.css" type="text/css"/>
+    <link rel="stylesheet" href="style/index_styles.css" type="text/css"/>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/color.js"></script>
+    <script src="js/animation.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+</head>
+<body class="light_theme">
+    <div class="graph_back" id="graph_back">
+        <div class="logo_body" id="logo_body">
+            <span class="logo_title">GraphViewer</span>
+            <span class="logo_subtitle">5.2.14 by GolThr.</span>
+        </div>
+        <div class="graph_none" id="graph_none">
+            <svg t="1665748028660" class="show_none img_svg" style="margin-top: 50px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15048" width="500" height="500"><path d="M896.00324 352c70.7 0 128-57.3 128-128 0-70.6-57.4-128-128-128-70.7 0-128 57.3-128 128 0 18.8 4.1 36.7 11.3 52.8 2.7 6 1.4 13.1-3.3 17.8l-24.2 24.2c-5.7 5.7-14.9 6.3-21.2 1.2-38.1-30.1-86.3-48-138.6-48-18.8 0-37.1 2.3-54.6 6.7-6.9 1.7-14.1-1.4-17.7-7.5l-6.6-11.4c-3.4-5.8-2.7-13.1 1.6-18.3 18.6-22.6 29.7-51.6 29.3-83.2C543.10324 89 486.30324 32.6 417.00324 32c-70.6-0.6-128.1 56.1-129 126.3-0.9 69.5 56.5 128.6 126 129.6 9.4 0.1 18.5-0.7 27.4-2.5 6.8-1.4 13.6 1.7 17.1 7.7l2.2 3.8c4 7 2.2 15.9-4.2 20.7-42.4 32.3-73 79.4-84 133.6-1.5 7.4-8.1 12.7-15.7 12.7h-94.1c-6.6 0-12.6-4-14.9-10.2-18.1-48-64.3-82.2-118.5-82.8C58.70324 370.3 0.50324 427.6 0.00324 498.1-0.49676 569.2 57.00324 627 128.00324 627c56.7 0 104.8-36.9 121.6-87.9 2.2-6.6 8.3-11.1 15.2-11.1h92c7.6 0 14.2 5.4 15.7 12.9 9.5 46.7 33.5 88 67 119.2 5.4 5 6.6 13.2 2.9 19.6l-21.7 37.6c-3.7 6.3-11.1 9.4-18.2 7.4-11.1-3.1-22.7-4.7-34.8-4.7-69.7 0.1-127 56.8-127.8 126.6-0.8 71.7 57.4 130 129.1 129.4 69.5-0.6 126.3-57.3 126.9-126.8 0.3-28-8.5-53.9-23.5-75.1-3.6-5.1-3.9-11.8-0.8-17.2l24.9-43.1c3.9-6.7 12-9.7 19.3-7 23.7 8.6 49.3 13.2 76 13.2 34.9 0 67.9-8 97.3-22.2 7.6-3.7 16.7-0.9 20.9 6.4l37 64c-26.3 23.5-43 57.7-43 95.8 0 70.9 58 128.5 128.9 128 69.7-0.5 126.2-56.7 127.1-126.3 0.9-70.1-57-129.3-127.1-129.7-6.2 0-12.3 0.4-18.3 1.2-6.5 0.9-12.8-2.2-16.1-7.8l-39.2-67.9c-3.4-5.9-2.7-13.3 1.7-18.4 34.2-39.3 54.9-90.7 54.9-147 0-38.9-9.9-75.5-27.4-107.4-3.4-6.2-2.2-13.9 2.8-18.9l28.4-28.4c4.9-4.9 12.4-6 18.7-2.9 17.4 8.6 36.9 13.5 57.6 13.5z m0-192c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zM128.00324 563c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z m240 349c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z m464-112c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zM416.00324 224c-35.3 0-64-28.7-64-64s28.7-64 64-64 64 28.7 64 64-28.7 64-64 64z m289.1 385.1C674.90324 639.4 634.70324 656 592.00324 656s-82.9-16.6-113.1-46.9C448.60324 578.9 432.00324 538.7 432.00324 496s16.6-82.9 46.9-113.1C509.10324 352.6 549.30324 336 592.00324 336s82.9 16.6 113.1 46.9C735.40324 413.1 752.00324 453.3 752.00324 496s-16.6 82.9-46.9 113.1z" p-id="15049"></path></svg>
+            <span class="none_tips" style="margin-top: 20px;">导入图数据以可视化图</span>
+        </div>
+    </div>
+    <div class="graph_box">
+        <svg id="graph_svg" class="graph_svg" style="display: none;"></svg>
+        <canvas id="graph_canvas" class="graph_canvas" style="display: none;"></canvas>
+    </div>
+
+    <!--    menu_left-->
+    <div class="menu_nav menu_nav_left" id="menu_nav" sw="on" onclick="toggleMenu(this)">
+        <svg t="1665747858193" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12354" width="200" height="200"><path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z" p-id="12355" fill="#2c2c2c"></path></svg>
+    </div>
+    <div class="menu menu_left" id="menu">
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp可视化</span>
+            <div class="btn_body">
+                <div class="secondary_button" id="pause_graph" style="margin-right: 10px;">
+                    <svg t="1665747606884" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5202" width="200" height="200"><path d="M320 128A64 64 0 0 0 256 192v640a64 64 0 0 0 128 0v-640A64 64 0 0 0 320 128z m384 0A64 64 0 0 0 640 192v640a64 64 0 0 0 128 0v-640A64 64 0 0 0 704 128z" p-id="5203"></path></svg>
+                </div>
+                <div class="secondary_button" id="reset_graph" style="margin-right: 10px;">
+                    <svg t="1665747672221" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6901" width="200" height="200"><path d="M511.552304 224.774323 511.552304 64.513316l-228.944296 228.944296 228.944296 228.943272L511.552304 316.352041c151.10344 0 274.733155 123.629715 274.733155 274.732132 0 151.104463-123.628692 274.734178-274.733155 274.734178-151.104463 0-274.734178-123.628692-274.734178-274.734178L145.24143 591.084173c0 201.471594 164.840302 366.311897 366.311897 366.311897 201.470571 0 366.310873-164.840302 366.310873-366.311897C877.863177 389.614625 713.022874 224.774323 511.552304 224.774323L511.552304 224.774323z" p-id="6902"></path></svg>
+                </div>
+                <div class="main_button" id="upgrade_graph">应用</div>
+            </div>
+        </div>
+        <div class="menu_body" style="margin-bottom: 0;">
+            <div class="menu_body_line">
+                <span class="subtitle">图数据</span>
+                <div class="menu_body_line" style="width: 165px; margin: 0;">
+                    <span id="graph_filename">导入(.json)</span>
+                    <input type="file" id="graph_json" style="display: none;" onchange="fileImport();">
+                    <div class="secondary_button" id="import_graph">
+                        <svg t="1665747723154" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8639" width="200" height="200"><path d="M494.933333 128m42.666667 0l0 0q42.666667 0 42.666667 42.666667l0 426.666666q0 42.666667-42.666667 42.666667l0 0q-42.666667 0-42.666667-42.666667l0-426.666666q0-42.666667 42.666667-42.666667Z" fill="#2c2c2c" p-id="8640"></path><path d="M836.266667 341.333333h-85.333334v85.333334h85.333334v341.333333h-597.333334v-341.333333h85.333334V341.333333h-85.333334a85.333333 85.333333 0 0 0-85.333333 85.333334v341.333333a85.333333 85.333333 0 0 0 85.333333 85.333333h597.333334a85.333333 85.333333 0 0 0 85.333333-85.333333v-341.333333a85.333333 85.333333 0 0 0-85.333333-85.333334z" fill="#2c2c2c" p-id="8641"></path><path d="M561.493333 701.44l131.413334-131.413333a34.133333 34.133333 0 0 0-24.32-58.026667H406.613333A34.133333 34.133333 0 0 0 384 570.026667l128 131.413333a33.706667 33.706667 0 0 0 49.493333 0z" fill="#2c2c2c" p-id="8642"></path></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">节点斥力</span>
+                <input type="text" id="node_manybody" placeholder="斥力" value="1500" autocomplete="off" oninput="inputingParams(this)"/>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">边弹力</span>
+                <input type="text" id="edge_link" placeholder="弹力" value="100" autocomplete="off" oninput="inputingParams(this)"/>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">渲染方式</span>
+                <div class="radio_box">
+                    <span class="radio_item radio_seledted" id="rander_svg" style="width: 50%;">svg</span>
+                    <span class="radio_divide"></span>
+                    <span class="radio_item" id="rander_canvas" style="width: 50%;">canvas</span>
+                </div>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">标签</span>
+                <div class="radio_box">
+                    <span class="radio_item" id="rander_no_label" style="width: 50%;">不显示</span>
+                    <span class="radio_divide"></span>
+                    <span class="radio_item radio_seledted" id="rander_with_label" style="width: 50%;">显示</span>
+                </div>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">主题</span>
+                <div class="radio_box">
+                    <span class="radio_item radio_seledted" id="theme_light" style="width: 50%;">亮色</span>
+                    <span class="radio_divide"></span>
+                    <span class="radio_item" id="theme_dark" style="width: 50%;">暗色</span>
+                </div>
+            </div>
+        </div>
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp节点信息</span>
+            <div class="btn_body">
+                <div class="secondary_button" id="located_node">
+                    <svg t="1665747764029" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10415" width="200" height="200"><path d="M960 480h-65.6C879.2 293.6 730.4 144.8 544 129.6V64h-64v65.6C293.6 144.8 144.8 293.6 129.6 480H64v64h65.6c15.2 186.4 164 335.2 350.4 350.4v65.6h64v-65.6c186.4-15.2 335.2-164 350.4-350.4h65.6v-64z m-448 352c-176.8 0-320-143.2-320-320s143.2-320 320-320 320 143.2 320 320-143.2 320-320 320z m128-320c0 70.4-57.6 128-128 128s-128-57.6-128-128 57.6-128 128-128 128 57.6 128 128z" p-id="10416" fill="#2c2c2c"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div class="menu_body">
+            <div class="menu_body_line">
+                <span class="subtitle">id</span>
+                <span class="result" id="node_id" style="font-weight: bold;">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">类型</span>
+                <span class="result" id="node_type">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">概率</span>
+                <span class="result" id="node_info">-</span>
+            </div>
+        </div>
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp查询同邻居</span>
+        </div>
+        <div class="menu_body">
+            <div class="menu_body_line">
+                <input type="text" id="n1_id" placeholder="节点1 id" value="" autocomplete="off" style="width: 90px;"/>
+                <input type="text" id="n2_id" placeholder="节点2 id" value="" autocomplete="off" style="width: 90px;"/>
+                <div class="secondary_button" id="search_set">
+                    <svg t="1665747805249" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="11383" width="200" height="200"><path d="M907.815385 840.861538L720.738462 653.784615c42.141538-55.926154 66.953846-125.636923 66.953846-200.861538 0-184.713846-150.055385-334.769231-334.769231-334.769231s-334.769231 150.055385-334.769231 334.769231 150.055385 334.769231 334.769231 334.769231c75.224615 0 144.935385-24.812308 200.861538-66.953846l187.076923 187.076923 66.953847-66.953847zM212.676923 452.923077c0-132.332308 107.913846-240.246154 240.246154-240.246154s240.246154 107.913846 240.246154 240.246154-107.913846 240.246154-240.246154 240.246154-240.246154-107.913846-240.246154-240.246154z" fill="#2c2c2c" p-id="11384"></path></svg>
+                </div>
+            </div>
+            <div class="menu_body" style="margin-bottom: 0;margin-top: 15px;">
+                <span id="search_cnt"></span>
+                <div class="search_body" id="search_set_res" style="margin-top: 15px;margin-bottom: 0;">
+                    <div class="menu_body">
+                        <svg t="1665748167931" class="show_none img_svg" style="width: 80px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16149" width="500" height="500"><path d="M693.3 741.8m-82.2 0a82.2 82.2 0 1 0 164.4 0 82.2 82.2 0 1 0-164.4 0Z" p-id="16150" fill="#2c2c2c"></path><path d="M711.7 553.9c-111.7 0-202.8 90.6-202.8 202.8 0 111.7 90.6 202.8 202.8 202.8 111.7 0 202.8-90.6 202.8-202.8s-91.1-202.8-202.8-202.8z m108.6 327.3l-56-56c-19.1 16.3-43.9 26.1-71 26.1-60.5 0-109.6-49.1-109.6-109.6s49.1-109.6 109.6-109.6 109.6 49.1 109.6 109.6c0 23.6-7.4 45.4-20.1 63.3l56.8 56.8-19.3 19.4zM569.7 564.5l-6.4 4.8c2.7-1.1 4.9-2.7 6.4-4.8z" p-id="16151" fill="#2c2c2c"></path><path d="M472.8 756.2c0-75.2 35.5-143.5 91.1-187-3.2 1.6-6.9 2.6-10.6 2.6H296.5c-12.7 0-23.3-10.6-23.3-23.3s10.6-23.3 23.3-23.3h256.3c12.7 0 23.3 10.6 23.3 23.3 0 6.4-2.6 11.7-6.4 15.9 37.1-27.5 82.6-43.4 131.9-43.4 61.4 0 126 19.1 167.4 58.3V101.1c0-20.7-16.4-37.1-37.1-37.1H163c-20.7 0-37.1 16.4-37.1 37.1v798.6c0 20.7 16.4 37.1 37.1 37.1h394c-53.5-41.9-84.2-107-84.2-180.6zM296.5 237.7h399.3c12.7 0 23.3 10.6 23.3 23.3 0 12.7-10.6 23.3-23.3 23.3H296.5c-12.7 0-23.3-10.6-23.3-23.3 0-12.7 10.6-23.3 23.3-23.3z m0 144h399.3c12.7 0 23.3 10.6 23.3 23.3 0 12.7-10.6 23.3-23.3 23.3H296.5c-12.7 0-23.3-10.6-23.3-23.3 0-12.7 10.6-23.3 23.3-23.3z" p-id="16152" fill="#2c2c2c"></path></svg>
+                        <span class="none_tips" style="margin-top: 20px;">分别点击图中两结点以自动查询</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--    menu_right-->
+    <div class="menu_nav menu_nav_right" id="menu_nav_right" sw="on" onclick="toggleMenuRight(this)">
+        <svg t="1666077832204" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3370" width="200" height="200"><path d="M331.840623 793.484755 331.840623 387.450978c0-16.191531-12.457456-28.645338-27.399836-28.645338L222.235197 358.80564c-14.94238 0-27.399836 13.698094-27.399836 28.645338L194.835361 793.484755 331.840623 793.484755 331.840623 793.484755zM506.210956 793.484755 506.210956 213.081861c0-16.192747-12.453808-29.89449-27.401052-29.89449l-82.20559 0c-14.94238 0-27.399836 13.701743-27.399836 29.89449L369.204478 793.484755 506.210956 793.484755 506.210956 793.484755zM680.580073 793.484755 680.580073 536.910048c0-16.191531-12.452591-29.889625-27.399836-29.889625L570.979512 507.020423c-14.947245 0-27.405918 13.698094-27.405918 29.889625L543.573595 793.484755 680.580073 793.484755 680.580073 793.484755zM854.94919 793.484755 854.94919 387.450978c0-16.191531-12.452591-28.645338-27.399836-28.645338l-82.200725 0c-14.947245 0-27.399836 13.698094-27.399836 28.645338L717.948794 793.484755 854.94919 793.484755 854.94919 793.484755zM879.860454 830.84861" p-id="3371"></path></svg>
+    </div>
+    <div class="menu_nav menu_nav_right" id="menu_back_top" sw="off" onclick="scrollToPosition('menu_right', 0)" style="top: calc(100% - 60px); display: none;">
+        <svg class="icon_svg" style="width: 20px;transform: rotate(0);" t="1665747105670" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3186" width="200" height="200"><path d="M512 845.61a35 35 0 0 1-35-35V352.82a35 35 0 1 1 70.08 0v457.75A35 35 0 0 1 512 845.61z" fill="#42494F" p-id="3187"></path><path d="M734.48 584.4a34.92 34.92 0 0 1-24.77-10.26L508.85 373.29 314.3 574.14a35 35 0 1 1-49.55-49.55L465.6 323.74a65.55 65.55 0 0 1 92.8 0l200.85 200.85a35 35 0 0 1-24.77 59.81z" fill="#42494F" p-id="3188"></path><path d="M699.37 248.46H324.7a35 35 0 0 1 0-70.08h374.67a35 35 0 1 1 0 70.08z" fill="#42494F" p-id="3189"></path></svg>
+    </div>
+    <div class="menu menu_right" id="menu_right">
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp查询节点</span>
+            <div class="btn_body">
+                <div class="secondary_button" id="located_query">
+                    <svg t="1665747764029" class="icon_svg" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10415" width="200" height="200"><path d="M960 480h-65.6C879.2 293.6 730.4 144.8 544 129.6V64h-64v65.6C293.6 144.8 144.8 293.6 129.6 480H64v64h65.6c15.2 186.4 164 335.2 350.4 350.4v65.6h64v-65.6c186.4-15.2 335.2-164 350.4-350.4h65.6v-64z m-448 352c-176.8 0-320-143.2-320-320s143.2-320 320-320 320 143.2 320 320-143.2 320-320 320z m128-320c0 70.4-57.6 128-128 128s-128-57.6-128-128 57.6-128 128-128 128 57.6 128 128z" p-id="10416" fill="#2c2c2c"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div class="menu_body">
+            <div class="menu_body_line">
+                <span class="subtitle">id</span>
+                <span class="result" id="query_id" style="font-weight: bold;">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">类型</span>
+                <span class="result" id="query_type">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">概率</span>
+                <span class="result" id="query_info">-</span>
+            </div>
+        </div>
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp统计</span>
+        </div>
+        <div class="menu_body">
+            <div class="menu_body_line">
+                <span class="subtitle">准确度</span>
+                <span class="result" id="com_search_acc">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">社区节点数</span>
+                <span class="result" id="com_node_cnt">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">社区节点同类数</span>
+                <span class="result" id="com_same_cnt">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">社区节点异类数</span>
+                <span class="result" id="com_diff_cnt">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">候选子图节点同类数</span>
+                <span class="result" id="sg_same_cnt">-</span>
+            </div>
+            <div class="menu_body_line">
+                <span class="subtitle">候选子图节点异类数</span>
+                <span class="result" id="sg_diff_cnt">-</span>
+            </div>
+        </div>
+        <div class="menu_head">
+            <span class="title">&nbsp&nbsp所有结点</span>
+            <span class="title" id="all_nodes_cnt" style="border-left: none;"></span>
+        </div>
+        <div class="menu_body" id="show_all_nodes_head" style="display:none; margin-bottom: 0;">
+            <div class="menu_body_line">
+                <div class="list_item" id="sort_class" m="class" s="" style="width: 30px;" onclick="showSortedNodes(this)">
+                    <span>类</span>
+                    <svg t="1665753894016" class="icon_svg indicator" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33212" width="200" height="200"><path d="M573.056 272l308.8 404.608A76.8 76.8 0 0 1 820.736 800H203.232a76.8 76.8 0 0 1-61.056-123.392L450.976 272a76.8 76.8 0 0 1 122.08 0z" p-id="33213" fill="#2c2c2c"></path></svg>
+                </div>
+                <div class="list_item" id="sort_id" m="id" s="" onclick="showSortedNodes(this)">
+                    <span>id排序</span>
+                    <svg t="1665753894016" class="icon_svg indicator" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33212" width="200" height="200"><path d="M573.056 272l308.8 404.608A76.8 76.8 0 0 1 820.736 800H203.232a76.8 76.8 0 0 1-61.056-123.392L450.976 272a76.8 76.8 0 0 1 122.08 0z" p-id="33213" fill="#2c2c2c"></path></svg>
+                </div>
+                <div class="list_item" id="sort_prob" m="prob" s="" onclick="showSortedNodes(this)">
+                    <span>概率排序</span>
+                    <svg t="1665753894016" class="icon_svg indicator" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="33212" width="200" height="200"><path d="M573.056 272l308.8 404.608A76.8 76.8 0 0 1 820.736 800H203.232a76.8 76.8 0 0 1-61.056-123.392L450.976 272a76.8 76.8 0 0 1 122.08 0z" p-id="33213" fill="#2c2c2c"></path></svg>
+                </div>
+            </div>
+        </div>
+        <div class="menu_body" id="show_all_nodes" style="margin-bottom: 0;">
+            <svg t="1665748421058" class="show_none img_svg" style="margin-top: 50px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="32179" width="500" height="500"><path d="M510.293333 384.568889c7.964444-3.413333 13.084444-11.377778 13.084445-20.48s-5.12-17.066667-13.084445-20.48l-85.333333-39.822222-39.822222-85.333334C381.155556 209.92 373.191111 204.8 364.088889 204.8s-17.066667 5.12-20.48 13.084444l-39.822222 85.333334-85.333334 39.822222C209.92 347.022222 204.8 354.986667 204.8 364.088889s5.12 17.066667 13.084444 20.48l85.333334 39.822222 39.822222 85.333333C347.022222 518.257778 354.986667 523.377778 364.088889 523.377778s17.066667-5.12 20.48-13.084445l39.822222-85.333333 85.902222-40.391111zM386.844444 397.653333l-22.755555 48.924445-22.755556-48.924445c-2.275556-5.12-6.257778-8.533333-10.808889-10.808889l-48.924444-22.755555 48.924444-22.755556c5.12-2.275556 8.533333-6.257778 10.808889-10.808889l22.755556-48.924444 22.755555 48.924444c2.275556 5.12 6.257778 8.533333 10.808889 10.808889l48.924445 22.755556-48.924445 22.755555c-4.551111 2.275556-8.533333 6.257778-10.808889 10.808889zM647.964444 662.755556L580.266667 625.777778l-36.408889-67.697778c-3.982222-7.395556-11.377778-11.946667-19.911111-11.946667s-15.928889 4.551111-19.911111 11.946667L466.488889 625.777778l-67.697778 36.408889c-7.395556 3.982222-11.946667 11.377778-11.946667 19.911111s4.551111 15.928889 11.946667 19.911111L466.488889 739.555556l36.408889 67.697777c3.982222 7.395556 11.946667 11.946667 19.911111 11.946667s15.928889-4.551111 19.911111-11.946667L580.266667 739.555556l67.697777-36.408889c7.395556-3.982222 11.946667-11.377778 11.946667-19.911111s-4.551111-16.497778-11.946667-20.48z m-95.573333 39.822222c-3.982222 2.275556-7.395556 5.12-9.102222 9.102222l-19.911111 36.977778-19.911111-36.977778c-2.275556-3.982222-5.12-7.395556-9.102223-9.102222l-36.977777-19.911111 36.977777-19.911111c3.982222-2.275556 7.395556-5.12 9.102223-9.102223l19.911111-36.977777 19.911111 36.977777c2.275556 3.982222 5.12 7.395556 9.102222 9.102223l36.977778 19.911111-36.977778 19.911111zM807.253333 401.066667l-45.511111-25.031111-25.031111-45.511112c-3.982222-7.395556-11.377778-11.946667-19.911111-11.946666s-15.928889 4.551111-19.911111 11.946666l-25.031111 45.511112-45.511111 25.031111c-7.395556 3.982222-11.946667 11.377778-11.946667 19.911111s4.551111 15.928889 11.946667 19.911111l45.511111 25.031111 25.031111 45.511111c3.982222 7.395556 11.377778 11.946667 19.911111 11.946667s15.928889-4.551111 19.911111-11.946667l25.031111-45.511111 45.511111-25.031111c7.395556-3.982222 11.946667-11.377778 11.946667-19.911111s-4.551111-15.928889-11.946667-19.911111z m-72.817777 28.444444c-3.982222 2.275556-6.826667 5.12-9.102223 9.102222l-8.533333 15.36-8.533333-15.36c-2.275556-3.982222-5.12-6.826667-9.102223-9.102222l-15.36-8.533333 15.36-8.533334c3.982222-2.275556 6.826667-5.12 9.102223-9.102222l8.533333-15.36 8.533333 15.36c2.275556 3.982222 5.12 6.826667 9.102223 9.102222l15.36 8.533334-15.36 8.533333z" p-id="32180"></path><path d="M284.444444 637.155556m-22.755555 0a22.755556 22.755556 0 1 0 45.511111 0 22.755556 22.755556 0 1 0-45.511111 0Z" p-id="32181"></path><path d="M654.222222 250.311111m-22.755555 0a22.755556 22.755556 0 1 0 45.511111 0 22.755556 22.755556 0 1 0-45.511111 0Z" p-id="32182"></path><path d="M768 694.044444m-22.755556 0a22.755556 22.755556 0 1 0 45.511112 0 22.755556 22.755556 0 1 0-45.511112 0Z" p-id="32183"></path></svg>
+            <span class="none_tips" style="margin-top: 20px;">导入图数据以查看所有结点</span>
+        </div>
+    </div>
+
+    <div class="tips" id="tips"></div>
+    <div class="mouse_tips" id="mouse_tips" style="display: none;">
+        <div class="node" id="mt_node"></div>
+        <div class="menu_body_line">
+            <span class="subtitle">类型</span>
+            <span class="result" id="mt_node_type">-</span>
+        </div>
+        <div class="menu_body_line">
+            <span class="subtitle">id</span>
+            <span class="result" id="mt_node_id">-</span>
+        </div>
+        <div class="menu_body_line">
+            <span class="subtitle">概率</span>
+            <span class="result" id="mt_node_info">-</span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/force.js"></script>
+    <script type="text/javascript" src="js/forceCanvas.js"></script>
+    <script type="text/javascript" src="js/drag.js"></script>
+    <script type="text/javascript" src="js/forcePage.js"></script>
+</body>
+</html>

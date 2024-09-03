@@ -1,0 +1,22 @@
+.footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 1rem;
+}
+
+.footer_title{
+    font-size: 0.7rem;
+    text-align: center;
+    color: #e4e4e4;
+}
+
+.footer_detail{
+    font-size: 0.7rem;
+    text-align: center;
+    color: #e4e4e4;
+}
